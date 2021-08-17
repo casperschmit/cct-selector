@@ -34,41 +34,69 @@ def error():
     pass
 
 
+
 @application.route("/system", methods=['GET', 'POST'])
 @application.route("/system/step/<int:step>", methods=['GET', 'POST'])
 @access_manager.requires_access(0)
 def system(step=0):
+    reg_json = request.get_json()
+
     if step == -1:
         return redirect(url_for('404'))
     if step == 0:
-        form = WizardScenarioForm1()
-        if form.validate_on_submit():
+        if reg_json:
+            form = WizardScenarioForm1.from_json(reg_json, skip_unknown_keys=True)
+            formCheck = request.method == 'POST'
+        else:
+            form = WizardScenarioForm1()
+            formCheck = form.validate_on_submit()
+        if formCheck:
             next_step = route_manager.handle_scenario(form, step)
             return redirect(url_for('system', step=next_step))
         else:
             print(form.errors.items())
         return render_template('wizard.html', title='Decision support system', form=form)
     if step == 1:
-        form = WizardScenarioFormCho1()
-        if form.validate_on_submit():
+        if reg_json:
+            form = WizardScenarioFormCho1.from_json(reg_json, skip_unknown_keys=True)
+            formCheck = request.method == 'POST'
+        else:
+            form = WizardScenarioFormCho1()
+            formCheck = form.validate_on_submit()
+        if formCheck:
             next_step = route_manager.handle_compatibility(form, step)
             return redirect(url_for('system', step=next_step))
         return render_template('wizard.html', title='Decision support system - step 1', form=form)
     if step == 2:
-        form = WizardCostForm()
-        if form.validate_on_submit():
+        if reg_json:
+            form = WizardCostForm.from_json(reg_json, skip_unknown_keys=True)
+            formCheck = request.method == 'POST'
+        else:
+            form = WizardCostForm()
+            formCheck = form.validate_on_submit()
+        if formCheck:
             next_step = route_manager.handle_cost(form, step)
             return redirect(url_for('system', step=next_step))
         return render_template('wizard.html', title='Decision support system - step 2', form=form)
     if step == 3:
-        form = WizardRelevancyForm()
-        if form.validate_on_submit():
+        if reg_json:
+            form = WizardRelevancyForm.from_json(reg_json, skip_unknown_keys=True)
+            formCheck = request.method == 'POST'
+        else:
+            form = WizardRelevancyForm()
+            formCheck = form.validate_on_submit()
+        if formCheck:
             next_step = route_manager.handle_relevancy(form, step)
             return redirect(url_for('system', step=next_step))
         return render_template('wizard.html', title='Decision support system - step 3', form=form)
     if step == 4:
-        form = AttributeWeightForm()
-        if form.validate_on_submit():
+        if reg_json:
+            form = AttributeWeightForm.from_json(reg_json, skip_unknown_keys=True)
+            formCheck = request.method == 'POST'
+        else:
+            form = AttributeWeightForm()
+            formCheck = form.validate_on_submit()
+        if formCheck:
             compute_attributes(form)
             return redirect(url_for('output'))
         return render_template('wizard.html', title='Decision support system - step 3', form=form)

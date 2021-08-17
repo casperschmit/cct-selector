@@ -10,7 +10,7 @@ from pathlib import Path
 import math
 import pandas as pd
 from flaskdss import ROOT_DIR
-from flask_login import current_user
+from flaskdss.models import Attributes
 
 github_token = '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'
 
@@ -100,7 +100,12 @@ def average_complexity(data):
     return complexity / count
 
 
-def compute_complexity(git_link, user_id):
+def compute_complexity(cct_id, git_link, user_id):
+    # Complexity score is the same for all CCTs in the database.
+    computed_attributes = Attributes.query.filter_by(cct=cct_id).first()
+    if computed_attributes:
+        return computed_attributes.complexity
+
     temp_download_path = ROOT_DIR + '/' + str(user_id) + '/temp'
     most_starred_repo_empty = True
     nth_most_starred = 0

@@ -1,4 +1,18 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div>Hi</div>
+    <p><h2> {{title}}</h2></p>
+    <div>
+        <p>
+            This web application serves as a proof-of-concept of the CCT selector tool as described
+            in the accompanied thesis. The aim of this tool is to assist dApp developers in the selection of
+            cross-chain technologies (CCT). In order to account for the continuously evolving CCTs in the field
+            of blockchain interoperability, an open database is provided to which new information on CCTs can be appended.
+            New information will first be judged by curators before it is considered by the system.
+        </p>
+        <p>
+            When first visiting this web application we suggest you register an account and browse to the 'wizard' tab
+            afterwards. This Wizard will aks you several questions. The answers to these questions are used to construct
+            a relative ranking of the CCTs, where the highest ranked ones may fit your cross-chain scenario best.
+        </p>
+    </div>
 {% endblock content %}

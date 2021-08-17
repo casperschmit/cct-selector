@@ -124,8 +124,7 @@ def compute_attributes(weights):
         if git_link:
             repo = get_most_starred(get_git_repos(git_link), [])
             devsupport_score = compute_devsupport(wp, docs, repo, get_git_org(git_link))
-            # devsupport_score = 5
-            complexity_score = compute_complexity(git_link, current_user.id)  # Compute complexity
+            complexity_score = compute_complexity(row.id, git_link, current_user.id)  # Compute complexity
             cost_score = compute_cost_score(wizard_answers, 2, repo)
         else:
             devsupport_score = compute_devsupport(wp, docs, None, None)
@@ -157,7 +156,7 @@ def compute_attributes(weights):
                 cost=cost_score,
                 compatibility=compatibility_score,
                 relevancy=round(relevancy_score, 2),
-                complexity=round(complexity_score, 2),
+                complexity=complexity_score,
                 security=security_score,
                 dev_support=devsupport_score
             )

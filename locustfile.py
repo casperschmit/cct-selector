@@ -31,6 +31,23 @@ class User(HttpUser):
         #                                     "password": "hello12", "confirm_password": "hello12"})
         self.client.post("/login", json={"email": self.email, "password": self.password})
 
+        self.client.post("/system", json={"scenario": "('cho_1', 'Connecting two defined blockchain systems')"})
+
+        self.client.post("/system/step/1", json={"source": "Bitcoin", "target": "Ethereum", "source_permissions":
+                                                 "Public permissionless", "target_permissions": "Public permissionless",
+                                                 "decentralization": "yes", "scalability": "yes", "development": "yes",
+                                                 "efficiency": "yes", "tokens": "yes", "crypto": "yes", "oracle": "yes",
+                                                 "smart_contract": "yes", "transfer": "yes"})
+
+        self.client.post("/system/step/2", json={"team_size": "4", "team_experience": "(0, 'Inexperienced')"})
+
+        self.client.post("/system/step/3", json={"project_description": "stress test"})
+
+        self.client.post("/system/step/4", json={"cost_weight": 1, "compatibility_weight": 1, "relevancy_weight": 1,
+                                                 "complexity_weight": 1, "security_weight": 1, "devsupport_weight": 1})
+
+
+
     def on_stop(self):
         self.client.get("/logout")
 
