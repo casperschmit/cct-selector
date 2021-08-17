@@ -7,7 +7,7 @@ import re
 from search.util import process_content
 import spacy
 
-nlp = spacy.load('en_core_web_lg', disable=['parser', 'ner'])
+nlp = spacy.load('en_core_web_md', disable=['parser', 'ner'])
 
 
 def clean_index(index_path, kb_path):
