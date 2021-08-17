@@ -27,14 +27,13 @@ class User(HttpUser):
             self.username, self.email, self.password, self.confirm_password = USER_CREDENTIALS.pop()
         # self.client.post("/register", json={"username": self.username, "email": self.email,
         #                                     "password": self.password, "confirm_password": self.confirm_password})
-        # self.client.post("/register", json={"username": "salanto", "email": "hellotest1@gmail.com",
-        #                                     "password": "hello12", "confirm_password": "hello12"})
+
         self.client.post("/login", json={"email": self.email, "password": self.password})
 
         self.client.post("/system", json={"scenario": "('cho_1', 'Connecting two defined blockchain systems')"})
 
         self.client.post("/system/step/1", json={"source": "Bitcoin", "target": "Ethereum", "source_permissions":
-                                                 "Public permissionless", "target_permissions": "Public permissionless",
+            "Public permissionless", "target_permissions": "Public permissionless",
                                                  "decentralization": "yes", "scalability": "yes", "development": "yes",
                                                  "efficiency": "yes", "tokens": "yes", "crypto": "yes", "oracle": "yes",
                                                  "smart_contract": "yes", "transfer": "yes"})
@@ -46,8 +45,6 @@ class User(HttpUser):
         self.client.post("/system/step/4", json={"cost_weight": 1, "compatibility_weight": 1, "relevancy_weight": 1,
                                                  "complexity_weight": 1, "security_weight": 1, "devsupport_weight": 1})
 
-
-
     def on_stop(self):
         self.client.get("/logout")
 
@@ -55,10 +52,10 @@ class User(HttpUser):
     def index(self):
         self.client.get("/")
 
-    @task
-    def system(self):
-        self.client.get("/system")
-
-    @task
-    def login(self):
-        self.client.post("/login", json={"email": "hellotest@gmail.com", "password": "hello1"})
+    # @task
+    # def system(self):
+    #     self.client.get("/system")
+    #
+    # @task
+    # def login(self):
+    #     self.client.post("/login", json={"email": "hellotest@gmail.com", "password": "hello1"})
