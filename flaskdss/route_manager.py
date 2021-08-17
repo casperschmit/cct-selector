@@ -1,4 +1,4 @@
-from flaskdss import app, db
+from flaskdss import application, db
 import pandas as pd
 from flaskdss.models import Project, User, Proposed, CCT, Role, System
 from flask_login import current_user

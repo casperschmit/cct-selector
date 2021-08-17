@@ -1,7 +1,7 @@
 from flask import render_template, url_for, flash, redirect, request
 
 from analysis.complexity import get_git_repos, clear_dir, compute_complexity
-from flaskdss import app, db
+from flaskdss import application, db
 from flaskdss.forms import RegistrationForm, LoginForm, InputForm, NewGoalForm, NewCCTForm, \
     DeveloperInputForm, WizardScenarioForm1, WizardScenarioFormCho1, WizardCompatibilityForm, \
     WizardCostForm, WizardRelevancyForm, AttributeWeightForm, CuratorForm, UserManagementForm, DecentralizedForm
@@ -18,23 +18,23 @@ from search.search import download_pdf
 from application import ROOT_DIR
 
 
-@app.route("/")
-@app.route("/home")
+@application.route("/")
+@application.route("/home")
 def home():
     return render_template('home.html')
 
 
-@app.route("/about")
+@application.route("/about")
 def about():
     return render_template('about.html', title='About')
 
 
-@app.route("/update")
+@application.route("/update")
 def update():
     return render_template('home.html', title='About')
 
 
-@app.route("/dev-input", methods=['GET', 'POST'])
+@application.route("/dev-input", methods=['GET', 'POST'])
 def developer_input():
     # # form = DeveloperInputForm()
     # # if form.validate_on_submit():
@@ -52,19 +52,19 @@ def developer_input():
     pass
 
 
-@app.route("/results", methods=['GET', 'POST'])
+@application.route("/results", methods=['GET', 'POST'])
 def results():
     results = [['Rootstock', 5], ['Polkadot', 6]]
     return render_template('output.html', title='Results', items=results)
 
 
-@app.route("/404", methods=['GET', 'POST'])
+@application.route("/404", methods=['GET', 'POST'])
 def error():
     pass
 
 
-@app.route("/system", methods=['GET', 'POST'])
-@app.route("/system/step/<int:step>", methods=['GET', 'POST'])
+@application.route("/system", methods=['GET', 'POST'])
+@application.route("/system/step/<int:step>", methods=['GET', 'POST'])
 @access_manager.requires_access(0)
 def system(step=0):
     if step == -1:
@@ -103,15 +103,15 @@ def system(step=0):
         return render_template('wizard.html', title='Decision support system - step 3', form=form)
 
 
-@app.route("/output", methods=['GET', 'POST'])
-@app.route("/output/sort-<string:sort>", methods=['GET', 'POST'])
+@application.route("/output", methods=['GET', 'POST'])
+@application.route("/output/sort-<string:sort>", methods=['GET', 'POST'])
 @access_manager.requires_access(0)
 def output(sort="aggregated"):
     output = sort_output_table(get_output_table(), sort)
     return render_template('output.html', title='Output', items=output)
 
 
-@app.route("/curator", methods=['GET', 'POST'])
+@application.route("/curator", methods=['GET', 'POST'])
 @access_manager.requires_access(1)
 def curator():
     form = CuratorForm()
@@ -131,7 +131,7 @@ def curator():
     return render_template('curator.html', title='Curator panel', form=form, table=proposed_ccts)
 
 
-@app.route("/add-to-database", methods=['GET', 'POST'])
+@application.route("/add-to-database", methods=['GET', 'POST'])
 @access_manager.requires_access(0)
 def add_cct():
     form = NewCCTForm()
@@ -145,7 +145,7 @@ def add_cct():
     return render_template('wizard.html', title='Propose new CCT', form=form)
 
 
-@app.route("/admin-panel", methods=['GET', 'POST'])
+@application.route("/admin-panel", methods=['GET', 'POST'])
 @access_manager.requires_access(2)
 def admin_panel():
     system_row = System.query.filter_by(id=1).first()
@@ -175,7 +175,7 @@ def admin_panel():
                            decentralized_form=decentralized_form, decentralized=decentralized_db)
 
 
-@app.route("/register", methods=['GET', 'POST'])
+@application.route("/register", methods=['GET', 'POST'])
 def register():
     reg_json = request.get_json()
 
@@ -205,7 +205,7 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 
-@app.route("/login", methods=['GET', 'POST'])
+@application.route("/login", methods=['GET', 'POST'])
 def login():
     reg_json = request.get_json()
 
@@ -233,7 +233,7 @@ def login():
     return render_template('login.html', title='Login', form=form)
 
 
-@app.route("/logout", methods=['GET', 'POST'])
+@application.route("/logout", methods=['GET', 'POST'])
 def logout():
     logout_user()
     return redirect(url_for('home'))
@@ -269,7 +269,7 @@ def logout():
 #
 #     return render_template('home.html', title='Home')
 
-@app.route('/testing')
+@application.route('/testing')
 def testing():
     # download_pdf('https://www.wanlianzhijia.com/Uploads/Project/2018-03-30/5abdfb12241d3.pdf', '/')
     # download_pdf('https://arxiv.org/pdf/1810.02174.pdf', ROOT_DIR + '/test')
