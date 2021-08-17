@@ -1,3 +1,4 @@
+from database import db_manager
 from flaskdss import application, db
 import pandas as pd
 from flaskdss.models import Project, User, Proposed, CCT, Role, System
@@ -5,6 +6,8 @@ from flask_login import current_user
 from flask import flash
 import json
 import hashlib
+
+from search.search import keyword_search_handler
 
 
 def handle_scenario(form, step):
@@ -188,6 +191,13 @@ def propose_cct(form):
     return True
 
 
+def recalibrate():
+    # Get database from AWS
+    connector = db_manager.DBconnect()
+    df = db_manager.get_df(connector.connect(), 'cct')
+    relevancy = keyword_search_handler(df, 'scrape', 50, True, 'test')
+
+
 def approve_cct(id):
     proposed_cct = Proposed.query.filter_by(id=id).first()
 
@@ -215,6 +225,9 @@ def approve_cct(id):
     # Db handling
     db.session.add(cct)
     db.session.commit()
+
+    flash('re-calibration in progress, this may take a while...', 'info')
+    recalibrate()
 
     return True
 

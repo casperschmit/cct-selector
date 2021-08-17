@@ -16,38 +16,11 @@ from analysis.analysis import compute_attributes, get_output_table, sort_output_
 from get_database import get_database
 from search.search import download_pdf
 
+
 @application.route("/")
 @application.route("/home")
 def home():
     return render_template('home.html')
-
-
-@application.route("/about")
-def about():
-    return render_template('about.html', title='About')
-
-
-@application.route("/update")
-def update():
-    return render_template('home.html', title='About')
-
-
-@application.route("/dev-input", methods=['GET', 'POST'])
-def developer_input():
-    # # form = DeveloperInputForm()
-    # # if form.validate_on_submit():
-    # #     content = form.content.data
-    # #     calibration = form.calibration.data
-    # #     search_limit = form.search_limit.data
-    # #     flash('Success', 'success')
-    # #     print(content)
-    # #     print(calibration)
-    # #     print(search_limit)
-    # #     search_results = search.keyword_search_handler('search/kb-input.xlsx', 'search/kb3', search_limit, calibration,
-    # #                                                    content)
-    #     return render_template('output.html', title='Results', items=search_results)
-    # return render_template('input.html', title='Add input', form=form)
-    pass
 
 
 @application.route("/results", methods=['GET', 'POST'])

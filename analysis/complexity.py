@@ -116,7 +116,7 @@ def compute_complexity(git_link, user_id):
         download_git_repo(url, temp_download_path)
         lizard_complexity_check(temp_download_path)
         lizard_score = interpret_lizard(ROOT_DIR + "/lizard.csv")  # Cyclomatic complexity
-        complexity_score = average_complexity(complexity_check(temp_download_path))  # Whitespace complexity
+        # complexity_score = average_complexity(complexity_check(temp_download_path))  # Whitespace complexity
 
         if lizard_score == -1:
             most_starred_repo_empty = True
@@ -127,9 +127,6 @@ def compute_complexity(git_link, user_id):
 
         clear_dir(ROOT_DIR + '/' + str(user_id))
 
-
-
-    print("Lizard: " + str(lizard_score))
-    print("Complexity: " + str(complexity_score))
+    print("Lizard complexity: " + str(lizard_score))
+    # print("Complexity: " + str(complexity_score))
     return lizard_score
-

@@ -110,7 +110,7 @@ def compute_attributes(weights):
 
     # Relevancy search
     input_content = wizard_answers.description
-    relevancy = keyword_search_handler(df, 'scrape', 50, False, input_content)
+    relevancy = keyword_search_handler(df, 'scrape', 50, False, input_content) # Search without recalibration
     # relevancy = {'Cosmos': 5.827898232597742}
     print(relevancy)
     for index, row in df.iterrows():  # df.iloc[1:].iterrows():
