@@ -32,10 +32,7 @@
                         <a class="nav-item nav-link" href="{{ url_for('system') }}">System</a>
                 {% endif %}
                 <a class="nav-item nav-link" href="{{ url_for('add_cct') }}">Add to database</a>
-<!--                <a class="nav-item nav-link" href="{{ url_for('update') }}">Update</a>-->
-<!--                <a class="nav-item nav-link" href="{{ url_for('developer_input') }}">Dev input</a>-->
             </div>
-            <!-- Navbar Right Side -->
             <div class="navbar-nav">
                 {% if current_user.is_authenticated %}
                     <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
