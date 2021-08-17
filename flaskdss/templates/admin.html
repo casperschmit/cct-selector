@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2> {{title}}</h2>
+                <div></div>
+                <div></div>
+                <div><h3>
+                    Users
+                </h3></div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                        <th scope="col"> ID </th>
+                        <th scope="col"> Username</th>
+                        <th scope="col"> Email</th>
+                        <th scope="col"> Role</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for row in table %}
+                        <tr>
+                            <td>{{ row.id }}</td>
+                            <td>{{ row.username }}</td>
+                            <td>{{ row.email }}</td>
+                            <td>{{ row.role }}</td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+                <div>
+                    {{ render_form(form) }}
+
+                    <div><h3>Decentralized database</h3></div>
+                    {% if decentralized %}
+                        <div>The database the system currently uses is: Decentralized on the Ethereum blockchain</div>
+                    {% else %}
+                        <div>The database the system currently uses is: Centralized on AWS</div>
+                    {% endif %}
+                    <div></div>
+                    <div>
+                        {{ render_form(decentralized_form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

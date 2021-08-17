@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2> {{title}}</h2>
+                <table class="table">
+                  <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col"><a href="{{ url_for('output', sort='name') }}"> Name</a> </th>
+                        <th scope="col"> <a href="{{ url_for('output', sort='cost') }}">Cost</a></th>
+                        <th scope="col"> <a href="{{ url_for('output', sort='compatibility') }}">Compatibility</a></th>
+                        <th scope="col"> <a  href="{{ url_for('output', sort='relevancy') }}">Relevancy</a></th>
+                        <th scope="col"> <a  href="{{ url_for('output', sort='complexity') }}">Complexity</a></th>
+                        <th scope="col"> <a  href="{{ url_for('output', sort='security') }}">Security</a></th>
+                        <th scope="col"> <a  href="{{ url_for('output', sort='developer_support') }}">Developer support</a></th>
+                        <th scope="col"> <a  href="{{ url_for('output', sort='aggregated') }}">Aggregated</a></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for item in items %}
+                    <tr>
+                        <th scope="row">{{ loop.index }}</th>
+                        {% for key in item %}
+                            <td>{{ item[key] }}</td>
+                        {% endfor %}
+                    </tr>
+
+                    {% endfor %}
+
+                  </tbody>
+                </table>
+                <div>
+                    <a href="{{ url_for('developer_input') }}" class="btn btn-info" role="button">Search again</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

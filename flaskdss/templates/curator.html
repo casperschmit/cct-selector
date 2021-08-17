@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2> {{title}}</h2>
+                <table class="table">
+                  <thead>
+                    <tr>
+                        <th scope="col"> ID </th>
+                        <th scope="col"> Name</th>
+                        <th scope="col"> Whitepaper</th>
+                        <th scope="col"> Docs</th>
+                        <th scope="col"> Github</th>
+                        <th scope="col"> Source chain</th>
+                        <th scope="col"> Source chain permissions</th>
+                        <th scope="col"> Target chain</th>
+                        <th scope="col"> Target chain permissions</th>
+                        <th scope="col"> Use case</th>
+                        <th scope="col"> Technical scheme</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for row in table %}
+                        <tr>
+                            <td>{{ row.id }}</td>
+                            <td>{{ row.name }}</td>
+                            <td>{{ row.whitepaper }}</td>
+                            <td>{{ row.docs }}</td>
+                            <td>{{ row.github }}</td>
+                            <td>{{ row.source_chain }}</td>
+                            <td>{{ row.source_permissions }}</td>
+                            <td>{{ row.target_chain }}</td>
+                            <td>{{ row.target_permissions }}</td>
+                            <td>{{ row.use_case }}</td>
+                            <td>{{ row.technical_scheme }}</td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+                <div>
+                    {{ render_form(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

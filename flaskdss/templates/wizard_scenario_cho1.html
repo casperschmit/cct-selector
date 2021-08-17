@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p><h2> {{title}}</h2></p>
+                <form method="POST">
+                    {{ form.csrf_token}}
+                    <div class="form-group">
+                        {{ form.source.label(class="form-control-label") }}
+                        {{ form.source(class="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.target.label(class="form-control-label") }}
+                        {{ form.target(class="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.source_permissions.label(class="form-control-label") }}
+                        {{ form.source_permissions(class="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.target_permissions.label(class="form-control-label") }}
+                        {{ form.target_permissions(class="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.decentralization.label(class="form-control-label") }}
+                        {{ form.decentralization(class="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.scalability.label(class="form-control-label") }}
+                        {{ form.scalability(class="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.development.label(class="form-control-label") }}
+                        {{ form.development(class="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.efficiency.label(class="form-control-label") }}
+                        {{ form.efficiency(class="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.tokens.label(class="form-control-label") }}
+                        {{ form.tokens(class="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.crypto.label(class="form-control-label") }}
+                        {{ form.crypto(class="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.oracle.label(class="form-control-label") }}
+                        {{ form.oracle(class="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.smart_contract.label(class="form-control-label") }}
+                        {{ form.smart_contract(class="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.transfer.label(class="form-control-label") }}
+                        {{ form.transfer(class="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-outline-info", multiple=True) }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

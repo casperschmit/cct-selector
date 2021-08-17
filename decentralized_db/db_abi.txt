@@ -1,0 +1,424 @@
+[
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "cctName",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "row",
+				"type": "uint256"
+			}
+		],
+		"name": "LogDeleteCCT",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "empName",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "empIdIndex",
+				"type": "uint256"
+			}
+		],
+		"name": "LogDeleteEmp",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "cctName",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "cctID",
+				"type": "uint256"
+			}
+		],
+		"name": "LogNewCCT",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "empName",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "empSalary",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "empIdIndex",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "empID",
+				"type": "uint256"
+			}
+		],
+		"name": "LogNewEmp",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "empName",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "empSalary",
+				"type": "uint256"
+			}
+		],
+		"name": "LogUpdateEmpSal",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "cctID",
+				"type": "uint256"
+			}
+		],
+		"name": "deleteCCT",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getEmpCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "count",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "retString",
+				"type": "string"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "cctName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "docs",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "whitePaper",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "gitHub",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "cctID",
+				"type": "uint256"
+			}
+		],
+		"name": "insertCCT",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "empName",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "empSalary",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "empID",
+				"type": "uint256"
+			}
+		],
+		"name": "insertEmp",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "empID",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "newSalary",
+				"type": "uint256"
+			}
+		],
+		"name": "updateEmpSalary",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "success",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "cctDatabase",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "cctName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "docs",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "whitePaper",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "gitHub",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "cctIdIndex",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "valid",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getAll",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "cctName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "docs",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "whitePaper",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "gitHub",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "cctIdIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "valid",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct cctDB.cct[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "cctID",
+				"type": "uint256"
+			}
+		],
+		"name": "getAllData",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "whitePaper",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "docs",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "gitHub",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "cctId",
+				"type": "uint256"
+			}
+		],
+		"name": "getCCTName",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "empIDck",
+				"type": "uint256"
+			}
+		],
+		"name": "getEmpData",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "empName",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "empSalary",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "cctID",
+				"type": "uint256"
+			}
+		],
+		"name": "isCCT",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "isIndeed",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "empIDck",
+				"type": "uint256"
+			}
+		],
+		"name": "isEmp",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "isIndeed",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
