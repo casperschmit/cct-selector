@@ -7,8 +7,6 @@ from scrapy.spiders import CrawlSpider
 from scrapy import signals
 from pydispatch import dispatcher
 
-from application import ROOT_DIR
-
 import pickle
 import re
 import os

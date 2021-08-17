@@ -7,7 +7,6 @@ from operator import itemgetter
 from get_database import get_database
 from database import db_manager
 from search.search import keyword_search_handler
-from application import ROOT_DIR
 
 from analysis.cost import compute_cost_score
 from analysis.security import compute_security_score
@@ -29,20 +28,6 @@ import pathlib
 import pandas as pd
 
 
-# def start_git_crawl(df):
-#     configure_logging()
-#     runner = CrawlerRunner()
-#
-#     @defer.inlineCallbacks
-#     def crawl():
-#         for i in yield_git_crawlers(df, runner):
-#             yield i
-#         if reactor.running:
-#             reactor.stop()
-#
-#     crawl()
-#     # if len(runner.crawlers) > 0:
-#     reactor.run()  # the script will block here until the last crawl call is finished
 
 
 def interpret_license(license_key):
@@ -54,51 +39,6 @@ def interpret_license(license_key):
         return 1
     else:
         return 0
-
-
-# def construct_dev_support_score(name, wp, docs, link):
-#     wp_docs_score = 0
-#     docs_score = 0
-#     email_score = 0
-#     license_score = 0
-#
-#     if wp != None or docs != None:
-#         wp_docs_score = 1
-#
-#     try:
-#         # Get license from most starred repository
-#         previous_most_starred = []
-#         if link is not None:
-#             repo = get_most_starred(get_git_repos(link), previous_most_starred)
-#             license_key = repo.get_license().license.key
-#             license_score = interpret_license(license_key)
-#         else:
-#             license_score = 0
-#     except Exception as e:
-#         pass
-#
-#     print(name)
-#     print(license_score)
-#
-#     scores_dict = {name: [wp_docs_score, email_score, license_score]}
-#     if pathlib.Path(ROOT_DIR + '/analysis/scores.pkl').exists():
-#         with open(ROOT_DIR + '/analysis/scores.pkl', 'rb') as f:
-#             x = pickle.load(f)
-#             scores_dict.update(x)
-#     with open(ROOT_DIR + '/analysis/scores.pkl', 'wb') as f:
-#         pickle.dump(scores_dict, f)
-
-
-# def yield_git_crawlers(df, runner):
-#     for index, row in df.iloc[1:].iterrows():
-#         name = row[0]
-#         link = row[3]
-#         wp = row[1]
-#         docs = row[2]
-#
-#         if link is not None:
-#             yield runner.crawl(GitSpider, name=name, start_urls=[link])
-#         construct_dev_support_score(name, wp, docs, link)
 
 
 def days_between(d1, d2):
@@ -275,10 +215,5 @@ def get_output_table():
 
         output_list.append(output)
 
-    # compute_aggregated_score(output_list)
-
     return output_list
 
-
-if __name__ == '__main__':
-    compute_attributes()

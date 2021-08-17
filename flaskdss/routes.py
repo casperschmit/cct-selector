@@ -15,8 +15,6 @@ from analysis.analysis import compute_attributes, get_output_table, sort_output_
 
 from get_database import get_database
 from search.search import download_pdf
-from application import ROOT_DIR
-
 
 @application.route("/")
 @application.route("/home")

@@ -24,7 +24,7 @@ from whoosh.index import open_dir
 
 from twisted.internet import reactor, defer
 
-from application import ROOT_DIR
+from flaskdss import ROOT_DIR
 
 
 def start_crawl(filename, path):

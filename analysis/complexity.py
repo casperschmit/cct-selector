@@ -9,7 +9,7 @@ import shutil
 from pathlib import Path
 import math
 import pandas as pd
-from application import ROOT_DIR
+from flaskdss import ROOT_DIR
 from flask_login import current_user
 
 github_token = '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'
