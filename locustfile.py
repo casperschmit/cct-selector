@@ -48,9 +48,9 @@ class User(HttpUser):
     def on_stop(self):
         self.client.get("/logout")
 
-    @task
-    def index(self):
-        self.client.get("/")
+    # @task
+    # def index(self):
+    #     self.client.get("/")
 
     # @task
     # def system(self):
