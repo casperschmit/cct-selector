@@ -138,6 +138,7 @@ Werkzeug==2.0.1
 Whoosh==2.7.4
 wrapt==1.12.1
 WTForms==2.3.3
+WTForms-JSON==0.3.3
 yarl==1.6.3
 zope.interface==5.4.0
 
