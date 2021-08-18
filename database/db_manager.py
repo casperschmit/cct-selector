@@ -26,6 +26,7 @@ class DBconnect:
         return cnx
 
 
+
 def get_df(cnx, table_name):
     df = pd.read_sql_table(table_name, cnx)
     return df

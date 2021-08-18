@@ -101,7 +101,9 @@ def compute_attributes(weights):
 
     # Get database from AWS
     connector = db_manager.DBconnect()
-    df = db_manager.get_df(connector.connect(), 'cct')
+    cnx = connector.connect()
+    df = db_manager.get_df(cnx, 'cct')
+    cnx.close()
 
     # df = pd.read_excel('/Users/casper/PycharmProjects/semantic-search/search/kb-input-test.xlsx')
 
@@ -111,9 +113,7 @@ def compute_attributes(weights):
     # Relevancy search
     input_content = wizard_answers.description
     relevancy = keyword_search_handler(df, 'scrape', 50, False, input_content) # Search without recalibration
-    # relevancy = {'Cosmos': 5.827898232597742}
-    print(relevancy)
-    for index, row in df.iterrows():  # df.iloc[1:].iterrows():
+    for index, row in df.iterrows():
         print(row)
 
         git_link = row.github
