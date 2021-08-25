@@ -1,12 +1,12 @@
-from database import db_manager
-from flaskdss import application, db
-import pandas as pd
-from flaskdss.models import Project, User, Proposed, CCT, Role, System
-from flask_login import current_user
-from flask import flash
 import json
-import hashlib
 
+import pandas as pd
+from flask import flash
+from flask_login import current_user
+
+from database import db_manager
+from flaskdss import db
+from flaskdss.models import Project, User, Proposed, CCT, Role, System
 from search.search import keyword_search_handler
 
 

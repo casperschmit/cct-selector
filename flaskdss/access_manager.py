@@ -1,8 +1,10 @@
 from functools import wraps
+
 from flask import url_for, redirect, request, flash
-from flaskdss.models import User, Role
 from flask_login import login_user, logout_user, current_user
+
 from flaskdss import db
+from flaskdss.models import User
 
 
 def logout():

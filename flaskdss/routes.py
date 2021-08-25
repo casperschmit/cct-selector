@@ -1,20 +1,16 @@
 from flask import render_template, url_for, flash, redirect, request
 
-from analysis.complexity import get_git_repos, clear_dir, compute_complexity
-from flaskdss import application, db
-from flaskdss.forms import RegistrationForm, LoginForm, InputForm, NewGoalForm, NewCCTForm, \
-    DeveloperInputForm, WizardScenarioForm1, WizardScenarioFormCho1, WizardCompatibilityForm, \
-    WizardCostForm, WizardRelevancyForm, AttributeWeightForm, CuratorForm, UserManagementForm, DecentralizedForm
-from flaskdss.models import CCT, System
-from flaskdss import util
-from flaskdss import route_manager
-from flaskdss.models import User, Role, Proposed
-from flaskdss import access_manager
-from flask_login import current_user, logout_user, login_required
-from analysis.analysis import compute_attributes, get_output_table, sort_output_table, compute_aggregated_score
+from flask_login import current_user, logout_user
 
-from get_database import get_database
-from search.search import download_pdf
+from analysis.analysis import compute_attributes, get_output_table, sort_output_table
+from flaskdss import access_manager
+from flaskdss import application, db
+from flaskdss import route_manager
+from flaskdss.forms import RegistrationForm, LoginForm, NewCCTForm, \
+    WizardScenarioForm1, WizardScenarioFormCho1, WizardCostForm, WizardRelevancyForm, AttributeWeightForm, CuratorForm, \
+    UserManagementForm, DecentralizedForm
+from flaskdss.models import System
+from flaskdss.models import User, Role, Proposed
 
 
 @application.route("/")
@@ -27,12 +23,6 @@ def home():
 def results():
     results = [['Rootstock', 5], ['Polkadot', 6]]
     return render_template('output.html', title='Results', items=results)
-
-
-@application.route("/404", methods=['GET', 'POST'])
-def error():
-    pass
-
 
 
 @application.route("/system", methods=['GET', 'POST'])
@@ -238,43 +228,4 @@ def logout():
     return redirect(url_for('home'))
 
 
-# @app.route("/ids")
-# def set_id():
-#
-#     df = get_database()
-#
-#     for index, row in df.iloc[1:].iterrows():
-#
-#         entry = ""
-#         for value in row:
-#             entry += str(value)
-#
-#         print(hash(entry))
-#         cct = CCT(
-#             id=hash(entry),
-#             name=row[0],
-#             whitepaper=row[1],
-#             docs=row[2],
-#             github=row[3],
-#             source_chain=row[4],
-#             source_permissions=row[5],
-#             target_chain=row[6],
-#             target_permissions=row[7],
-#             use_case=row[8],
-#             technical_scheme=row[9]
-#         )
-#         db.session.add(cct)
-#         db.session.commit()
-#
-#     return render_template('home.html', title='Home')
 
-@application.route('/testing')
-def testing():
-    # download_pdf('https://www.wanlianzhijia.com/Uploads/Project/2018-03-30/5abdfb12241d3.pdf', '/')
-    # download_pdf('https://arxiv.org/pdf/1810.02174.pdf', ROOT_DIR + '/test')
-    # repos = get_git_repos('https://github.com/comit-network')
-    # clear_dir(ROOT_DIR + '/' + str(current_user.id))
-    # previous_most_starred = []
-    # most_starred_repo = get_most_starred(repos, previous_most_starred)
-    compute_complexity('https://github.com/comit-network', current_user.id)
-    return render_template('home.html', title='test')

@@ -149,9 +149,6 @@ def keyword_search_handler(df, kb_path, search_limit, re_calibrate, input_conten
     else:
         ix = open_dir(index_path)
         model = Word2Vec.load(model_name)
-        # model = KeyedVectors.load_word2vec_format('search/GoogleNews.bin.gz', binary=True)
-        # print(model.similar_by_word('cat'))
 
     results = perform_search(input_content, ix, model, alternative_keyword_depth=10, search_limit=search_limit)
-    # attribute_results = get_attribute_results(results, attributes_sheet)
     return results

@@ -79,7 +79,7 @@
 		"inputs": [
 			{
 				"internalType": "address[]",
-				"name": "_allOwners",
+				"name": "_allCurators",
 				"type": "address[]"
 			},
 			{
@@ -93,12 +93,87 @@
 	},
 	{
 		"inputs": [],
-		"name": "getOwners",
+		"name": "getCurators",
 		"outputs": [
 			{
 				"internalType": "address[]",
 				"name": "",
 				"type": "address[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getProposedCCTs",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "cctName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "docs",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "whitePaper",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "gitHub",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "cctIdIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "valid",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct cctDB.cct[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getPropositions",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "transmitter",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "cctID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "confirmationCount",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct DatabaseManager.Proposition[]",
+				"name": "",
+				"type": "tuple[]"
 			}
 		],
 		"stateMutability": "view",

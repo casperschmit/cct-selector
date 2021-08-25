@@ -1,10 +1,5 @@
-import sqlalchemy as db
-import sqlalchemy
-from sqlalchemy import create_engine, inspect
-import os
 import pandas as pd
-
-from get_database import get_database
+from sqlalchemy import create_engine
 
 
 class DBconnect:
@@ -26,21 +21,6 @@ class DBconnect:
         return cnx
 
 
-
 def get_df(cnx, table_name):
     df = pd.read_sql_table(table_name, cnx)
     return df
-
-
-if __name__ == '__main__':
-    # c = DBconnect()
-    # cn = c.connect()
-    # inspector = inspect(cn.engine)
-    #
-    # df = get_database()
-    # df.to_sql('cct', con=cn.engine, if_exists='append', index=False, chunksize=1000)
-    #
-    # print(get_df(cn, 'cct'))
-    #
-    # print(inspector.get_table_names())
-    pass

@@ -1,33 +1,17 @@
-from scrapy.crawler import CrawlerRunner
-from twisted.internet import reactor, defer
-from scrapy.utils.log import configure_logging
+from datetime import datetime
 from datetime import datetime
 from operator import itemgetter
 
-from get_database import get_database
-from database import db_manager
-from search.search import keyword_search_handler
-
-from analysis.cost import compute_cost_score
-from analysis.security import compute_security_score
-from analysis.compatibility import compute_compatibility_score
-from analysis.dev_support import GitSpider
-from analysis.complexity import compute_complexity, get_most_starred, get_git_repos, get_git_org
-# from cost import compute_cost_score
-# from security import compute_security_score
-# from compatibility import compute_compatibility_score
-# from dev_support import GitSpider
-# from complexity import compute_complexity, get_most_starred, get_git_repos, get_git_org
-
-from flaskdss import db
-from flaskdss.models import Project, Attributes, CCT
 from flask_login import current_user
 
-import pickle
-import pathlib
-import pandas as pd
-
-
+from analysis.compatibility import compute_compatibility_score
+from analysis.complexity import compute_complexity, get_most_starred, get_git_repos, get_git_org
+from analysis.cost import compute_cost_score
+from analysis.security import compute_security_score
+from database import db_manager
+from flaskdss import db
+from flaskdss.models import Project, Attributes, CCT
+from search.search import keyword_search_handler
 
 
 def interpret_license(license_key):
@@ -175,7 +159,7 @@ def compute_aggregated_score(weights):
     max_devsupport = 5
     max_security = 5
 
-    sum_relevancy = 0
+    sum_relevancy = 1
     for item in output_list:
         sum_relevancy += item.relevancy
 
