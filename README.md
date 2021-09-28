@@ -20,5 +20,7 @@ After all requirements have been successfully installed you can run the
 `application.py` script in order to host the flask web app. In this same script you
 are able to change the hosting port and whether or not you would like to deploy the app in debug mode.
 
+Do note the database must be provisioned and the appropriate credentials must be appended to the database connection package. 
+
 ## License
 MIT License referenced in the `LICENSE.md` file.
