@@ -12,7 +12,7 @@ import pandas as pd
 from flaskdss import ROOT_DIR
 from flaskdss.models import Attributes
 
-github_token = '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'
+github_token = # TODO enter github token
 
 
 def get_most_starred(repos, previous):

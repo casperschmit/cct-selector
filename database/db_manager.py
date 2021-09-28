@@ -5,10 +5,10 @@ from sqlalchemy import create_engine
 class DBconnect:
     __cnx = None  # Do not modify
     __user = 'admin'
-    __password = 'Sigibaba123'
+    __password = # TODO fill in db password
     # __host = os.environ.get("DATABASE_ENDPOINT",
     #                         default=False)  # 'cct-db.caeczgelrws8.us-east-1.rds.amazonaws.com'
-    __host = 'cct-db.caeczgelrws8.us-east-1.rds.amazonaws.com'
+    __host = # TODO fill in db host
     __port = '3306'
     __database = 'main'
 

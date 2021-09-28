@@ -6,6 +6,8 @@ from decentralized_db import curator_contract, web3
 from flaskdss import application, db
 from flaskdss.models import CCT
 
+private_key = 'PLACEHOLDER'
+
 
 @application.route('/centralized_write', methods=['GET', 'POST'])
 def centralized_write():
@@ -63,7 +65,7 @@ def decentralized_write():
         try:
             tx = curator_contract.functions.proposeCCT("newnewnew", num).buildTransaction()
             signed_tx = web3.eth.account.signTransaction(tx,
-                                                         private_key='3d524dd883f2b8d14c3aa157456cdecadacc506a17404aba31d4641483f651ba')
+                                                         private_key=private_key)
             res = web3.eth.sendRawTransaction(signed_tx.rawTransaction)
             receipt = web3.eth.waitForTransactionReceipt(signed_tx.hash)
             print("Gas used:" + str(receipt.gasUsed))

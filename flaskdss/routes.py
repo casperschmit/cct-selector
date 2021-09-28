@@ -1,14 +1,18 @@
-from flask import render_template, url_for, flash, redirect, request
+import random
 
+from flask import render_template, request
+from flask import url_for, flash, redirect
 from flask_login import current_user, logout_user
 
 from analysis.analysis import compute_attributes, get_output_table, sort_output_table
+from decentralized_db import curator_contract, web3
 from flaskdss import access_manager
 from flaskdss import application, db
 from flaskdss import route_manager
 from flaskdss.forms import RegistrationForm, LoginForm, NewCCTForm, \
     WizardScenarioForm1, WizardScenarioFormCho1, WizardCostForm, WizardRelevancyForm, AttributeWeightForm, CuratorForm, \
     UserManagementForm, DecentralizedForm
+from flaskdss.models import CCT
 from flaskdss.models import System
 from flaskdss.models import User, Role, Proposed
 
@@ -226,6 +230,3 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('home'))
-
-
-
